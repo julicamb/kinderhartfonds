@@ -1,0 +1,42 @@
+* {
+    padding: 0;
+    margin:0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #000;
+    height: 100%;
+}
+
+.background {
+    background-color: #fff;
+    background-image: url('../assets/bg.png');
+    background-position: center center;
+    background-size: cover;
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+#speed {
+    color: #fff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 4em;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    text-shadow: 0px 0px 5px #000;
+}

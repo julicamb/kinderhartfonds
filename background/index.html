@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="nl">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kinderhartfonds projectie</title>
+        <script src="../assets/socket.io-1.3.7.js"></script>
+        <script src="../assets/jquery-2.1.4.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            $(function() {
+
+                var _socket = io();
+                var _video = $('#video');
+                var _video0 = _video[0];
+                var _theme = '';
+
+                _socket.on('running', function(theme, phase, led) {
+
+                    if(_theme != theme) {
+                        _theme = theme;
+                        var src = '../assets/backgrounds/' + _theme + '.mp4';
+                        _video0.src = src;
+                        _video0.load();
+                        _video0.play();
+                        _video.css('display', 'block');
+                    }
+
+
+                });
+
+                _socket.on('stop', function() {
+
+                    _video.css('display', 'none');
+                    _theme = '';
+
+                });
+
+            });
+        </script>
+        <style>
+            * {
+                padding: 0;
+                margin:0;
+            }
+
+            body {
+                background-color: #000;
+            }
+
+            video {
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <video width="720" height="560" id="video" autoplay="true" loop muted>
+            <source src="../assets/backgrounds/ruimte.mp4" type="video/mp4" id="source" />
+            Deze browser ondersteunt geen video, gebruik een andere browser.
+        </video>
+    </body>
+</html>

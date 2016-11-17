@@ -1,0 +1,174 @@
+// sass --watch style.scss:style.min.css --sourcemap=none --scss --style compressed
+
+
+
+$bgBody:    #373944;
+$bgTable:   #282830;
+$bgActive:  #373944;
+$bgFooter:  #414855;
+$bgBorderT: #2e2d35;
+$bgBorderB: #1e1d23;
+$light:     #ffffff;
+$accent1:   #ffa872;
+$accent2:   #6ddbda;
+$accent3:   #ff7365;
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300');
+
+
+
+html, body {
+    background: $bgBody;
+    font-size: 1em;
+}
+
+#themes {
+    background: $bgTable;
+    color: $light;
+    padding: 50px;
+    text-align: center;
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    img {
+        border: 15px solid $bgTable;
+        cursor: pointer;
+        height: auto;
+        margin-bottom: 30px;
+        width: 100%;
+        transition: border-color 0.1s ease-in-out;
+        -moz-transition: border-color 0.1s ease-in-out;
+        -wekbit-transition: border-color 0.1s ease-in-out;
+
+        &:hover {
+            border-color: $accent1;
+        }
+
+        &.selected {
+            border-color: $accent2;
+        }
+    }
+}
+
+table {
+    color: $light;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: 1.6em;
+
+    thead, tfoot {
+        tr {
+            background-color: $bgFooter;
+        }
+
+        th {
+            border-top: 1px solid $bgBorderT !important;
+            border-bottom: 1px solid $bgBorderB !important;
+        }
+
+        td {
+            border: none !important;
+        }
+
+        button {
+            font-size: 1em !important;
+            height: 100px !important;
+            width: 100px !important;
+        }
+
+        span#speed {
+            display: inline-block;
+            padding: 0 20px;
+        }
+
+        span#totalDuration {
+            padding: 20px;
+        }
+    }
+
+    tbody {
+        tr {
+            background-color: $bgTable;
+            border-left: 25px solid $bgTable;
+
+            &:hover {
+                background-color: $bgActive;
+                cursor: pointer;
+            }
+
+            &.current {
+                background-color: $accent2;
+            }
+        }
+
+        td {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-top: 1px solid $bgBorderT !important;
+            border-bottom: 1px solid $bgBorderB !important;
+
+            span {
+                padding: 20px;
+                display: block;
+            }
+        }
+    }
+
+    img {
+        height: 80px;
+        max-width: 100%;
+    }
+}
+
+button {
+    background-color: $accent2;
+    color: $light !important;
+    padding: 15px 20px !important;
+    text-transform: uppercase;
+
+    &:active, &.click-effect {
+        border-color: $bgFooter;
+        -webkit-box-shadow: inset 0 5px 20px 0 rgba(0,0,0,0.75) !important;
+        -moz-box-shadow:    inset 0 5px 20px 0 rgba(0,0,0,0.75) !important;
+        box-shadow:         inset 0 5px 20px 0 rgba(0,0,0,0.75) !important;
+    }
+
+    &:focus {
+        outline: none !important;
+    }
+
+    &#btnStart {
+        font-size: 2em !important;
+    }
+
+    &#btnSlower, &#btnFaster {
+        background-color: $accent1;
+    }
+
+    &#btnStop {
+        background-color: $accent3;
+    }
+}
+
+// Einde test-confirmatie modal
+.modal {
+    text-align: center;
+    font-size: 1.2em !important;
+
+    .btn {
+        font-size: 1.2em !important;
+        text-transform: none;
+
+        &.btn-default {
+            color: #333 !important; // standaard Bootstrap btn-default kleur
+        }
+    }
+
+    .modal-footer {
+        text-align: center;
+    }
+}

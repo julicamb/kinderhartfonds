@@ -1,0 +1,12 @@
+body {
+    background-color: #000;
+}
+
+div {
+    margin: 20px;
+}
+
+video {
+    display: block;
+    margin: auto auto;
+}
