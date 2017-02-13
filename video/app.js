@@ -11,7 +11,7 @@ var _theme,
 $(function() {
 
     $('body').addClass('background');
-    $('#speed').hide();
+    //$('#speed').hide();
 
     // init globale variabelen
     _video = [];
@@ -22,11 +22,32 @@ $(function() {
     _playing = false;
     _fadeLength = 1000;
 
-    // snelheidsindicator faken
+    var goal = 60;
+
+
+    var lastTapSeconds = 0;
+    var bpm = 0;
+    var beats = [];
+
+        $('body').keydown(function(e) {  //keypress did not work with ESC;
+            if (event.which == '75') {
+                var tapSeconds = new Date().getTime();
+                bpm = ((1 / ((tapSeconds - lastTapSeconds) / 1000)) * 60);
+                lastTapSeconds = tapSeconds;
+                beats.push(Math.floor(bpm));
+            }
+        });
+
     window.setInterval(function(){
-        var fakeSpeed = Math.round(58 + Math.random() * 4);
-        $('#speed').text(fakeSpeed);
-    }, 500);
+     $('#speed').text(Math.floor(bpm));
+        if(Math.floor(bpm) > (goal+10)){
+            $('#speed').attr('style', 'color:red')
+        } else if(Math.floor(bpm) < (goal-10)){
+            $('#speed').attr('style', 'color:yellow')
+        } else {
+            $('#speed').attr('style', 'color:#00FF7F')
+        }
+    }, 1500);
 
     var socket = io();
 
