@@ -15,26 +15,19 @@
                 var _theme = '';
 
                 _socket.on('running', function(theme, phase, led) {
-
                     if(_theme != theme) {
                         _theme = theme;
-                        var src = '../assets/backgrounds/' + _theme + '.mp4';
+                        var src = '../content/backgrounds/' + _theme + '.mp4';
                         _video0.src = src;
                         _video0.load();
                         _video0.play();
                         _video.css('display', 'block');
                     }
-
-
                 });
-
                 _socket.on('stop', function() {
-
                     _video.css('display', 'none');
                     _theme = '';
-
                 });
-
             });
         </script>
         <style>
@@ -54,7 +47,7 @@
         </style>
     </head>
     <body>
-        <video width="720" height="560" id="video" autoplay="true" loop muted>
+        <video width="1920" height="1080" id="video" autoplay="true" loop muted>
             <source src="../assets/backgrounds/ruimte.mp4" type="video/mp4" id="source" />
             Deze browser ondersteunt geen video, gebruik een andere browser.
         </video>

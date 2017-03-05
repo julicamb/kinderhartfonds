@@ -123,7 +123,6 @@ function listThemes() {
         html += '<div class="col col-xs-6 col-md-4">'
               + '<img src="../assets/themes/' + _themes[i]['slug'] + '.png" id="' + i + '" />'
               + '</div>'
-
     }
 
     html += '</div>'
