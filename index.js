@@ -1,19 +1,34 @@
+var app     = require('express')();
+var path = require('path');
 var http = require('http');
-var fs = require('fs');
+var server  = http.Server(app);
+var io      = require('socket.io')(server);
+var static  = require('express-static');
 
-fs.readFile('index.html', function (err, html) {
-    if (err) {
-        throw err; 
-    }       
-    var server = http.createServer(function (request, response) {
-  response.writeHead(200, { "Content-Type": "text/html" });
-  response.write(html);
-  response.end();
+
+
+//var server = http.createServer(app);
+
+// Listen on port 8000
+// Uses process.env.PORT for Heroku deployment as Heroku will dynamically assign a port
+server.listen(process.env.PORT || 8000);
+
+var publicPath = path.resolve(__dirname, '');
+
+
+app.use(static(publicPath));
+app.get('/', function(req, res){
+    res.sendFile('index.html', {root: publicPath});
 });
-// Listen on port 8000, IP defaults to 127.0.0.1
-server.listen(8000);
 
+// Socket IO
+io.on('connection', function (socket) {
+    // Create a room to broadcast to
+    socket.join('main');
+    socket.on('statechange', function (data) {
+        // Broadcast changes to all clients in room
+        socket.to('main').emit('urlchange', { url : data.url });
+    });
+});
 // Put a friendly message on the terminal
-console.log("Server running at http://127.0.0.1:8000/");
-});
-
+console.log("Server running at http://localhost:8000/");

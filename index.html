@@ -2,7 +2,16 @@
 <html lang="nl">
     <head>
         <title>Kinderhartfonds controller</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="stylesheet" type="text/css" href="assets/bootstrap/bootstrap.min.css" />
+            <script src="assets/socket.io-1.3.7.js"></script>
+            <script src="assets/jquery-2.1.4.min.js"></script>
+            <script src="assets/jquery.confirm.min.js"></script>
+            <script src="assets/fastclick.min.js"></script>
+            <script src="assets/bootstrap/bootstrap.min.js"></script>
+        <script src="http://192.168.1.7:8000/socket.io/socket.io.js"></script>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             * {
                 margin: 0;
@@ -46,5 +55,12 @@
                 <a href="background/index.html">projectie</a>
             </li>
         </ul>
+        <script>
+            var socket = io.connect('http://192.168.1.7:8000');
+            socket.on('urlchange', function (data) {
+                //console.log(d.data);
+                window.location.href = data.url;
+            });
+        </script>
     </body>
 </html>

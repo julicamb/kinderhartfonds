@@ -8,9 +8,6 @@ var _socket = io(),
     _testStarted = 0,
     _phasesDuration = [];
 
-
-
-
 var _themes = [
     {
         'slug' : 'ruimte',

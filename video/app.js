@@ -43,7 +43,7 @@ $(function() {
         }
     }, 500);
 
-    var socket = io();
+    var socket = io('http://192.168.1.7:8000');
 
     socket.on('running', function(theme, phase, led, speed) {
         $('body').removeClass('background');
@@ -75,10 +75,12 @@ function switchVideo(){
     if(_phase != 1 && _phase != 2 && _phase != 8) {
         // tussenscherm-video
         var src = '../assets/videos/' + _theme + '/' + (_phase-1) + '_naar_' + _phase + '.mp4';
+        console.log(src);
         play(src, false);
     } else {
         // fase-video
         var src = '../assets/videos/' + _theme + '/' + _phase + '.mp4';
+        console.log(src);
         play(src, true);
     }
 
