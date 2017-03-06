@@ -70,6 +70,15 @@ $(function() {
     }, 1000);
 
 
+    var test = function(){
+        _socket.emit('ControlLogin');
+        console.log('emit control happened');
+    };
+    test();
+
+    _socket.on('VideoLogin', function() {
+        console.log('video logged in')
+    });
 
 
     _socket.on('running', function(theme, phase, led, speed) {
@@ -135,7 +144,7 @@ function listThemes() {
     $('#btnStart').click(function() {
 
         if(!$(this).hasClass('disabled')) {
-            startTest(1);
+            startTest(1, true);
         }
 
         return false;
@@ -156,7 +165,6 @@ function listThemes() {
 
         // gekozen thema id opslaan (zit in img id)
         _theme = _themes[$(this).attr('id')];
-        console.log('selected theme:', _theme);
 
         // start knop enablen (enkel nodig bij eerste click)
         $('#themes button').removeClass('disabled');
@@ -171,22 +179,26 @@ function listThemes() {
 
 
 
-function startTest(phase) {
+function startTest(phase, start) {
 
-    // gekozen thema verzenden
-    _socket.emit('theme picked', _theme['slug']);
-
+        // gekozen thema verzenden
+        _socket.emit('theme picked', _theme['slug']);
     // themes div verbergen met een fadeout en daarna verwijderen
     $('#themes').fadeOut(200, function() {
         $('body').empty();
 
         // fase 1 instellen en verzenden, led kleur ook meezenden
         _phase = phase;
-        _socket.emit('phase update', _phase, _theme['leds'][phase-1]);
-
+        if(start == true){
+            _phase = 1;
+            _socket.emit('running', _theme['slug'], _phase, _theme['leds'][phase - 1], 1);
+            console.log(_theme['slug'] + ' ' + _theme['leds'][phase - 1] + ' ' + _phase);
+        } else {
+            _socket.emit('phase update', _phase, _theme['leds'][phase - 1]);
+            console.log('new fase: ' + _phase);
+        }
         drawPhases();
     });
-
 }
 
 

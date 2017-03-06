@@ -32,6 +32,8 @@ $(function() {
             }
         });
 
+
+
     window.setInterval(function(){
      $('#speed').text(Math.floor(bpm));
         if(Math.floor(bpm) > (goal+10)){
@@ -43,7 +45,17 @@ $(function() {
         }
     }, 500);
 
-    var socket = io('http://192.168.1.7:8000');
+    var socket = io();
+
+    var test = function(){
+        socket.emit('VideoLogin');
+        console.log('emit video happened');
+    };
+    test();
+
+    socket.on('ControlLogin', function() {
+        console.log('controller logged in')
+    });
 
     socket.on('running', function(theme, phase, led, speed) {
         $('body').removeClass('background');
@@ -52,8 +64,18 @@ $(function() {
         _theme = theme;
         _phase = phase;
         _speed = speed;
+        console.log(theme);
+        console.log(phase);
+        console.log(speed);
         switchVideo();
     });
+
+    socket.on('phase update', function(phase) {
+        _phase = phase;
+        console.log(phase);
+        switchVideo();
+    });
+
 
     socket.on('stop', function(){
         $(_video[_activeVideo]).fadeOut(_fadeLength, function() {
@@ -71,6 +93,8 @@ $(function() {
 function switchVideo(){
     // speed resetten bij nieuwe video
     _speed = 1;
+    console.log('theme: ' + _theme);
+    console.log('phase: ' + _phase);
     // check of er tussenscherm moet getoond worden
     if(_phase != 1 && _phase != 2 && _phase != 8) {
         // tussenscherm-video
