@@ -1,0 +1,1 @@
+omxplayer --no-osd /home/pi/App/usbdrv/assets/videos/ruimte/2-3.mp4 --loop --no-osd /home/pi/App/usbdrv/assets/videos/ruimte/3.mp4

@@ -56,7 +56,7 @@
             </li>
         </ul>
         <script>
-            var socket = io.connect('http://192.168.1.7:8000');
+            var socket = io.connect('localhost:8000');
             socket.on('urlchange', function (data) {
                 //console.log(d.data);
                 window.location.href = data.url;

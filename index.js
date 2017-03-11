@@ -4,6 +4,10 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = 8000;
+//exec om commando's te kunnen uitvoeren via sh files
+var exec = require('child_process').exec, child;
+
+var _theme;
 
 server.listen(port, function () {
     console.log('Server listening at port %d', port);
@@ -58,10 +62,43 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('running', theme, phase, led, speed);
     });
     socket.on('theme picked', function (data) {
+        //geen nut hier maar gewoon als test
+        //exec zal de 1.sh file executeren waar er een commando uitgevoerd wordt
+        //exec('sh 1.sh /directory');
+        _theme = data;
+        var execString = 'sh commands/' + data + '/1.sh';
+        exec(execString);
         console.log('theme: ' + data);
         socket.broadcast.emit('theme picked', data);
     });
     socket.on('phase update', function (data) {
+
+        /*if(_phase != 1 && _phase != 2 && _phase != 8) {
+            // tussenscherm-video
+            var src = '../assets/videos/' + _theme + '/' + (_phase-1) + '_naar_' + _phase + '.mp4';
+            console.log(src);
+            play(src, false);
+        } else {
+            // fase-video
+            var src = '../assets/videos/' + _theme + '/' + _phase + '.mp4';
+            console.log(src);
+            play(src, true);
+        }*/
+
+        var execString;
+
+        if(data != 1 && data != 2 && data != 8){
+            // tussenscherm-video
+            //'sh macCommands/' voor te testen op mac
+            execString = 'sh commands/' + _theme + '/' + (data - 1) + '-' + data + '.sh';
+            console.log(execString);
+        } else {
+            // fase-video
+            //'sh macCommands/' voor te testen op mac
+            execString = 'sh commands/' + _theme + '/' + data + '.sh';
+        }
+
+        exec(execString);
         console.log('Phase ' + data);
         socket.broadcast.emit('phase update', data);
     });
