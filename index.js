@@ -86,7 +86,6 @@ io.on('connection', function (socket) {
         }*/
 
         var execString;
-        var videoString;
 
         if(data != 1 && data != 2 && data != 8){
             // tussenscherm-video
