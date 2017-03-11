@@ -128,7 +128,7 @@ function listThemes() {
     for(var i = 0; i < _themes.length; i++) {
 
         html += '<div class="col col-xs-6 col-md-4">'
-              + '<img src="../assets/themes/' + _themes[i]['slug'] + '.png" id="' + i + '" />'
+              + '<img src="../usbdrv/assets/themes/' + _themes[i]['slug'] + '.png" id="' + i + '" />'
               + '</div>'
     }
 
@@ -232,7 +232,7 @@ function drawPhases() {
     for(var i = 0; i < _phases.length; i++) {
 
         html += '<tr id="' + (i+1) + '" style="border-color:' + _theme['leds'][i] + '">'
-              + '<td style="background-image:url(\'../assets/screenshots/' + _theme['slug'] + '/' + (i+1) + '.jpg\')">'
+              + '<td style="background-image:url(\'../usbdrv/assets/screenshots/' + _theme['slug'] + '/' + (i+1) + '.jpg\')">'
               + '</td>'
               + '<td><span>' + _phases[i] + '</span></td>'
               + '<td class="text-right"><span id="duration' + (i+1) + '">' + '00:00' + '</span></td>'
