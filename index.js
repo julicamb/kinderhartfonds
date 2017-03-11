@@ -105,6 +105,7 @@ io.on('connection', function (socket) {
     });
     socket.on('stop', function () {
         console.log('stop');
+        exec('sh commands/stop.sh');
         socket.broadcast.emit('stop');
     });
     socket.on('speed update', function (data) {
