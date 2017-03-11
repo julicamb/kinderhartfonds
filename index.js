@@ -96,6 +96,7 @@ io.on('connection', function (socket) {
             // fase-video
             //'sh macCommands/' voor te testen op mac
             execString = 'sh commands/' + _theme + '/' + data + '.sh';
+            console.log(execString);
         }
 
         exec(execString);
