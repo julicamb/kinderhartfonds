@@ -1,1 +1,1 @@
-open -a vlc assets/videos/ruimte/3.mp4
+open -a vlc ../../usbdrv/assets/videos/ruimte/3.mp4
