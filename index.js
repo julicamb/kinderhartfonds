@@ -6,6 +6,9 @@ var io = require('socket.io')(server);
 var port = 8000;
 //exec om commando's te kunnen uitvoeren via sh files
 var exec = require('child_process').exec, child;
+var Omx = require('node-omxplayer');
+
+var player = Omx();
 
 var _theme;
 
@@ -86,20 +89,29 @@ io.on('connection', function (socket) {
         }*/
 
         var execString;
+        var videoString;
 
         if(data != 1 && data != 2 && data != 8){
             // tussenscherm-video
             //'sh macCommands/' voor te testen op mac
-            execString = 'sh commands/' + _theme + '/' + (data - 1) + '-' + data + '.sh';
-            console.log(execString);
+            //execString = 'sh commands/' + _theme + '/' + (data - 1) + '-' + data + '.sh';
+            videoString = "usbdrv/assets/videos/" + _theme + "/" + (data-1) + ".mp4";
+            player.newSource(videoString, hdmi, false, 0);
+                while(player.running == false){
+                    videoString = "usbdrv/assets/videos/" + _theme + "/" + data + ".mp4";
+                    player.newSource(videoString, hdmi, true, 0);
+                }
+            console.log(videoString);
         } else {
             // fase-video
             //'sh macCommands/' voor te testen op mac
-            execString = 'sh commands/' + _theme + '/' + data + '.sh';
-            console.log(execString);
+            //execString = 'sh commands/' + _theme + '/' + data + '.sh';
+            videoString = "usbdrv/assets/videos/" + _theme + "/" + data + ".mp4";
+            player.newSource(videoString, hdmi, true, 0);
+            console.log(videoString);
         }
 
-        exec(execString);
+        //exec(execString);
         console.log('Phase ' + data);
         socket.broadcast.emit('phase update', data);
     });
