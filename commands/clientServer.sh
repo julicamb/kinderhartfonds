@@ -1,1 +1,1 @@
-sudo fbi -T 1 -noverbose usbdrv/assets/clientServer.png
+sudo fbi -T 1 -noverbose /home/pi/App/usbdrv/assets/clientServer.png
