@@ -52,6 +52,10 @@ io.on('connection', function (socket) {
     socket.on('ControlLogin', function () {
         socket.broadcast.emit('ControlLogin');
     });
+    socket.on('stopSystem', function () {
+        var execString = 'sh commands/shutdown.sh';
+        exec(execString);
+    });
     /*socket.on('typing', function () {
         socket.broadcast.emit('typing', {
             username: socket.username

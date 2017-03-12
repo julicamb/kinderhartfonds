@@ -149,12 +149,26 @@ function listThemes() {
 
     html += '</div>'
           + '<button class="btn btn-lg disabled" id="btnStart">Start de test</button>'
-          + '</div>';
+          + '<button class="btn btn-lg disabled" id="btnStopSystem">Zet systeem uit</button>'
+        + '</div>';
 
     // delay en fade-in zodat tekst en afbeeldingen tegelijk verschijnen
     $('body').delay(1000).hide().append(html).fadeIn(200);
 
-
+    $('#btnStopSystem').confirm({
+        text: 'Volledig systeem uizetten? <br> Opgelet, wacht enkele seconden na dat de schermen <br> volledig zwart zijn voor dat je de stroom uitzet',
+        //title: 'Einde test',
+        confirm: function(button) {
+            _socket.emit('stopSystem');
+        },
+        cancel: function(button) {},
+        confirmButton: 'Ja, stop de App',
+        cancelButton: 'Nee, hervat de test',
+        post: true,
+        confirmButtonClass: 'btn-danger',
+        cancelButtonClass: 'btn-default',
+        dialogClass: 'modal-dialog modal-md'
+    });
 
 
     $('#btnStart').click(function() {
