@@ -7,6 +7,8 @@ var exec = require('child_process').exec, child;
 socket.on('connect', function () {
     // socket connected
     console.log('server connected');
+    var execString = 'sh commands/clientServer.sh';
+    exec(execString);
 });
 socket.on('theme picked', function (data) {
     console.log('theme picked: ' + data);

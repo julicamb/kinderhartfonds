@@ -41,7 +41,8 @@ app.get('/', function(req, res){
 
 io.on('connection', function (socket) {
 
-    
+    var execString = 'sh commands/mainServer.sh';
+    exec(execString);
 
     console.log('user connected');
 
