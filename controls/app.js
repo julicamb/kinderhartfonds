@@ -25,13 +25,28 @@ var _themes = [
         ]
     },
     {
-        'slug' : 'cowboys',
-        'name' : 'Cowboys',
+        'slug' : 'reis',
+        'name' : 'Reis rond de Wereld',
         'leds' : 0
     },
     {
-        'slug' : 'tdf',
-        'name' : 'Tour de France',
+        'slug' : 'mjungle',
+        'name' : 'Jungle',
+        'leds' : 0
+    },
+    {
+        'slug' : 'vjungle',
+        'name' : 'Jungle',
+        'leds' : 0
+    },
+    {
+        'slug' : 'mcircus',
+        'name' : 'Circus',
+        'leds' : 0
+    },
+    {
+        'slug' : 'vcircus',
+        'name' : 'Circus',
         'leds' : 0
     }
 ];
@@ -246,14 +261,6 @@ function drawPhases() {
           + '<td colspan="3" class="text-center">'
           + '<button href="#" class="btn btn-lg" id="btnPrevious">'
           + '<span class="glyphicon glyphicon-arrow-up" title="Vorige fase"></span>'
-          + '</button>&nbsp;'
-          + '<button href="#" class="btn btn-lg" id="btnSlower">'
-          + '<span class="glyphicon glyphicon-minus" title="Trager"></span>'
-          + '</button>'
-          + '<span id="speed"></span>'
-          + '<button href="#" class="btn btn-lg" id="btnFaster">'
-          + '<span class="glyphicon glyphicon-plus" title="Sneller"></span>'
-          + '</button>'
           + '</button>&nbsp;'
           + '<button href="#" class="btn btn-lg" id="btnNext">'
           + '<span class="glyphicon glyphicon-arrow-down" title="Volgende fase"></span>'
