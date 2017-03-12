@@ -149,7 +149,7 @@ function listThemes() {
 
     html += '</div>'
           + '<button class="btn btn-lg disabled" id="btnStart">Start de test</button>'
-          + '<button class="btn btn-lg disabled" id="btnStopSystem">Zet systeem uit</button>'
+          + '<button class="btn btn-lg" id="btnStopSystem">Zet systeem uit</button>'
         + '</div>';
 
     // delay en fade-in zodat tekst en afbeeldingen tegelijk verschijnen
