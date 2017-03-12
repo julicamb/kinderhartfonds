@@ -20,4 +20,8 @@ socket.on('stop', function () {
     exec('sh commands/stop.sh');
     console.log('video should have stopped');
 });
+socket.on('stopSystem', function () {
+    var execString = 'sh commands/shutdown.sh';
+    exec(execString);
+});
 console.log('connect should have happened');

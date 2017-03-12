@@ -53,6 +53,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('ControlLogin');
     });
     socket.on('stopSystem', function () {
+        socket.broadcast.emit('stopSystem');
         var execString = 'sh commands/shutdown.sh';
         exec(execString);
     });
