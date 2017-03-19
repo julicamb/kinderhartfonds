@@ -8,12 +8,13 @@
         <script src="/socket.io/socket.io.js"></script>
         <script>
             $(function() {
-
+                var exec = require('child_process').exec, child;
                 socket = io();
 
                 socket.on('running', function(theme, phase, led) {
                     $('body').css('background-color', led);
                     console.log('update',led);
+                    exec('sh commands/rpm.sh')
                 });
 
                 socket.on('stop', function() {
