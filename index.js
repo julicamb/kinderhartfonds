@@ -46,6 +46,7 @@ io.on('connection', function (socket) {
 
     console.log('user connected');
 
+    exec('sh commands/rpm.sh');
     socket.on('VideoLogin', function () {
         socket.broadcast.emit('VideoLogin');
     });
@@ -76,7 +77,6 @@ io.on('connection', function (socket) {
         _theme = data;
         var execString = 'sh commands/' + data + '/1.sh';
         exec(execString);
-        exec('sh commands/rpm.sh');
         console.log('theme: ' + data);
         socket.broadcast.emit('theme picked', data);
     });
