@@ -76,6 +76,7 @@ io.on('connection', function (socket) {
         _theme = data;
         var execString = 'sh commands/' + data + '/1.sh';
         exec(execString);
+        exec('sh commands/rpm.sh');
         console.log('theme: ' + data);
         socket.broadcast.emit('theme picked', data);
     });
