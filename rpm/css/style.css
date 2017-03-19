@@ -1,0 +1,53 @@
+	html, body
+			{
+				padding: 0;
+				margin: 0;
+			}
+
+			.meter img {
+				width: 400px;
+				position: absolute;
+			}
+
+			#dial {
+				width: 40px;
+				position: relative;
+				top: 127px;
+				left: 128px;
+				transform: rotate(-90deg); /* W3C */
+				-webkit-transform: rotate(-90deg); /* Safari & Chrome */
+				-moz-transform: rotate(-90deg); /* Firefox */
+				-ms-transform: rotate(-90deg); /* Internet Explorer */
+				-o-transform: rotate(-90deg); /* Opera */
+			}
+
+			.dial img {
+				width: 40px;
+				position: relative;
+				top: 127px;
+				left: 128px;
+				transform: rotate(-90deg); /* W3C */
+				-webkit-transform: rotate(-90deg); /* Safari & Chrome */
+				-moz-transform: rotate(-90deg); /* Firefox */
+				-ms-transform: rotate(-90deg); /* Internet Explorer */
+				-o-transform: rotate(-90deg); /* Opera */
+			}
+
+			.dial .inner {
+				width: 400px;
+				height: 400px;
+				transition-property: -webkit-transform;
+				transition-duration: 1s;
+				transition-timing-function: ease-in-out;
+				transform: rotate(0deg); /* W3C */
+				-webkit-transform: rotate(0deg); /* Safari & Chrome */
+				-moz-transform: rotate(0deg); /* Firefox */
+				-ms-transform: rotate(0deg); /* Internet Explorer */
+				-o-transform: rotate(0deg); /* Opera */
+			}
+
+			.meter
+			{
+				margin: 0;
+				padding: 0;
+			}
