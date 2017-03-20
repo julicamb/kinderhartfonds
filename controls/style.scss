@@ -150,6 +150,25 @@ button {
         background-color: $accent3;
     }
 }
+.fixedBottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: -50px;
+    padding:0;
+    background-color: #34495e;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.buttonLeft {
+    width: 30%;
+    margin-right: 20%;
+    padding: 0;
+}
+.buttonRight {
+    margin: 0;
+    right: 0;
+}
 
 // Einde test-confirmatie modal
 .modal {
