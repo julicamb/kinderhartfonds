@@ -22,7 +22,7 @@ io.on('connection', function (socket) {
     exec(execString);
     console.log('user connected');
     exec ("bash commands/led.sh white");
-    //exec('sh commands/rpm.sh');
+    exec('sh commands/rpm.sh');
     socket.on('VideoLogin', function () {
         socket.broadcast.emit('VideoLogin');
     });
