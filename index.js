@@ -22,7 +22,7 @@ io.on('connection', function (socket) {
     exec(execString);
     console.log('user connected');
     exec ("bash commands/led.sh white");
-    exec('sh commands/rpm.sh');
+    exec("chromium-browser --window-size=1920,150 --window-position=0,2000 --app=http:192.168.0.37:8000/bar_rpm/index.html");
     socket.on('VideoLogin', function () {
         socket.broadcast.emit('VideoLogin');
     });
