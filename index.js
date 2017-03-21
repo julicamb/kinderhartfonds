@@ -10,7 +10,7 @@ var exec = require('child_process').exec, child;
 var _theme;
 var lights = require("rgb-led");
 var led = require('rgb-led');
-var ledjes = new led.wifi370('192.168.0.20');
+var ledjes = new led.wifi370('10.10.123.3');
 
 //send arguments as: red, green, blue
 //color values are 0-255.
