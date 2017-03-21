@@ -12,7 +12,7 @@ socket.on('connect', function () {
 });
 socket.on('theme picked', function (data) {
     console.log('theme picked: ' + data);
-    var execString = 'sh commands/background.sh ' + data;
+    var execString = 'bash commands/background.sh ' + data;
     exec(execString);
     console.log('background video should have started');
 });
