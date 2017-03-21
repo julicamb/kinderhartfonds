@@ -1,1 +1,1 @@
-chromium-browser --window-size=1920,150 --window-position=0,2000 --allow-file-access-from-files --app=file://home/pi/App/bar_rpm/index.html
+chromium-browser --window-size=1920,150 --window-position=0,2000 --disable-web-security --allow-file-access-from-files --allow-file-access --app=file://home/pi/App/bar_rpm/index.html
