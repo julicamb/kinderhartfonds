@@ -1,0 +1,53 @@
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300');
+
+#rpm {
+	width: 1920px;
+	height: 150px;
+	position: fixed;
+	bottom: 0px;
+	background-color: black;
+}
+
+#bar img {
+	position: absolute;
+	width: 100%;
+}
+
+.dial img {
+	position: absolute;
+	height: 150px;
+	left: 658px;
+}
+
+#info_bar {
+	position: absolute;
+	width: 650px;
+	vertical-align: center;
+}
+
+h2 {
+	color: #6ddbda;
+	font-family: Roboto;
+	font-weight: 500;
+	font-size: 50px;
+	float: left;
+	margin-left: 25px;
+}
+
+#thumb {
+	float: right;
+	margin-right: 150px;
+}
+
+#thumb img {
+	height: 120px;
+	margin-top: 15px;
+	position: absolute;
+	color: #ccc;
+}
+
