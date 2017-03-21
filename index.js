@@ -8,6 +8,12 @@ var port = 8000;
 var exec = require('child_process').exec, child;
 
 var _theme;
+var lights = require("rgb-led");
+var led = require('rgb-led');
+var ledjes = new led.wifi370('192.168.0.20');
+
+//send arguments as: red, green, blue
+//color values are 0-255.
 
 server.listen(port, function () {
     console.log('Server listening at port %d', port);
@@ -40,6 +46,11 @@ app.get('/', function(req, res){
 });*/
 
 io.on('connection', function (socket) {
+
+
+
+//send arguments as: red, green, blue
+//color values are 0-255.
 
     var execString = 'sh commands/mainServer.sh';
     exec(execString);
@@ -74,6 +85,7 @@ io.on('connection', function (socket) {
         //geen nut hier maar gewoon als test
         //exec zal de 1.sh file executeren waar er een commando uitgevoerd wordt
         //exec('sh 1.sh /directory');
+        ledjes.writeToLight(0, 0, 255, 100);
         _theme = data;
         var execString = 'sh commands/' + data + '/1.sh';
         exec(execString);
@@ -113,6 +125,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('phase update', data);
     });
     socket.on('stop', function () {
+        ledjes.writeToLight(255, 0, 0, 100);
         console.log('stop');
         exec('sh commands/stop.sh');
         socket.broadcast.emit('stop');
