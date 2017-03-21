@@ -51,7 +51,6 @@ io.on('connection', function (socket) {
 
 //send arguments as: red, green, blue
 //color values are 0-255.
-        ledjes.writeToLight(0, 255, 0, 100);
 
     var execString = 'sh commands/mainServer.sh';
     exec(execString);
