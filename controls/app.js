@@ -13,16 +13,7 @@ var _themes = [
     {
         'slug' : 'ruimte',
         'name' : 'Ruimte',
-        'leds' : [
-            '#E4744E',
-            '#E4744E',
-            '#FBE5C0',
-            '#E32C4A',
-            '#EFB9DB',
-            '#E0AD5A',
-            '#FBE5C0',
-            '#E4744E'
-        ]
+        'leds' : 0
     },
     {
         'slug' : 'reis',
@@ -55,7 +46,6 @@ var _themes = [
 
 
 var _phases = [
-    'Intro',
     'Ademtest',
     'Opwarming',
     'Lastiger',

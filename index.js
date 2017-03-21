@@ -84,6 +84,8 @@ io.on('connection', function (socket) {
         _theme = data;
         var execString = 'sh commands/' + data + '/1.sh';
         exec(execString);
+        var ledString = 'sh commands/' + data + '/led.sh';
+        exec(ledString);
         console.log('theme: ' + data);
         socket.broadcast.emit('theme picked', data);
     });
@@ -103,7 +105,7 @@ io.on('connection', function (socket) {
 
         var execString;
 
-        if(data != 1 && data != 2 && data != 8){
+        if(data != 1 && data != 7){
             // tussenscherm-video
             //'sh macCommands/' voor te testen op mac
             execString = 'sh commands/' + _theme + '/' + (data - 1) + '-' + data + '.sh';
