@@ -10,7 +10,7 @@ var exec = require('child_process').exec, child;
 var _theme;
 var lights = require("rgb-led");
 var led = require('rgb-led');
-var Office = new led.wifi370('192.168.0.20');
+var Office = new led.wifi370('10.10.10.100');
 
 server.listen(port, function () {
     console.log('Server listening at port %d', port);
