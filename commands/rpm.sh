@@ -1,1 +1,1 @@
-chromium-browser --window-size=400,270 --window-position=760,2000 --app=http://google.com
+chromium-browser --window-size=400,270 --window-position=760,2000 --app=/home/pi/App/bar_rpm/index.html
