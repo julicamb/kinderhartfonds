@@ -8,7 +8,6 @@ var port = 8000;
 var exec = require('child_process').exec, child;
 
 var _theme;
-var lights = require("rgb-led");
 var led = require('rgb-led');
 var ledjes = new led.wifiCon('192.168.0.20');
 
@@ -85,7 +84,7 @@ io.on('connection', function (socket) {
         //geen nut hier maar gewoon als test
         //exec zal de 1.sh file executeren waar er een commando uitgevoerd wordt
         //exec('sh 1.sh /directory');
-        ledjes.setColor(180);
+        ledjes.setColor('red');
         _theme = data;
         var execString = 'sh commands/' + data + '/1.sh';
         exec(execString);
