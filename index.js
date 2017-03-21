@@ -10,7 +10,7 @@ var exec = require('child_process').exec, child;
 var _theme;
 var lights = require("rgb-led");
 var led = require('rgb-led');
-var ledjes = new led.wifi370('192.168.0.20');
+var ledjes = new led.wifiCon('192.168.0.20');
 
 //send arguments as: red, green, blue
 //color values are 0-255.
@@ -85,7 +85,7 @@ io.on('connection', function (socket) {
         //geen nut hier maar gewoon als test
         //exec zal de 1.sh file executeren waar er een commando uitgevoerd wordt
         //exec('sh 1.sh /directory');
-        ledjes.writeToLight(0, 0, 255);
+        ledjes.setColor(180);
         _theme = data;
         var execString = 'sh commands/' + data + '/1.sh';
         exec(execString);
@@ -125,7 +125,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('phase update', data);
     });
     socket.on('stop', function () {
-        ledjes.writeToLight(255, 0, 0);
+        ledjes.setColor(180);
         console.log('stop');
         exec('sh commands/stop.sh');
         socket.broadcast.emit('stop');
