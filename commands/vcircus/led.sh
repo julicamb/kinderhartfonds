@@ -1,1 +1,0 @@
-python /home/pi/App/node_modules/homebridge-magichome/flux_led.py 192.168.0.20 -c 158,205,221 -x RGBWWv1

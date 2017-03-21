@@ -82,9 +82,9 @@ io.on('connection', function (socket) {
         //exec zal de 1.sh file executeren waar er een commando uitgevoerd wordt
         //exec('sh 1.sh /directory');
         _theme = data;
-        var execString = 'sh commands/' + data + '/1.sh';
+        var execString = 'sh commands/video ' + data + ' ' + 1;
         exec(execString);
-        var ledString = 'sh commands/' + data + '/led.sh';
+        var ledString = 'sh commands/led.sh ' + data;
         exec(ledString);
         console.log('theme: ' + data);
         socket.broadcast.emit('theme picked', data);
@@ -108,12 +108,17 @@ io.on('connection', function (socket) {
         if(data != 1 && data != 7){
             // tussenscherm-video
             //'sh macCommands/' voor te testen op mac
-            execString = 'sh commands/' + _theme + '/' + (data - 1) + '-' + data + '.sh';
+            //sh commands/video.sh --- voor de commando uit om de video af te spelen met omxplayer
+            //sh commands/video.sh $1 $2 $3
+            // voorbeeld: sh commands/video.sh ruimte 3 4 -> video ruimte 3 naar 4
+            execString = 'sh commands/video.sh ' + _theme + ' ' + (data - 1) + ' ' + data;
             console.log(execString);
         } else {
             // fase-video
             //'sh macCommands/' voor te testen op mac
-            execString = 'sh commands/' + _theme + '/' + data + '.sh';
+            //sh commands/video.sh $1 $2 $3
+            // voorbeeld: sh commands/video.sh ruimte 3 -> video ruimte fase 3
+            execString = 'sh commands/video.sh ' + _theme + ' ' + data;
             console.log(execString);
         }
 
