@@ -6,7 +6,7 @@ html, body {
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,300');
 
 #rpm {
-	width: 1920px;
+	width: 100%;
 	height: 150px;
 	position: fixed;
 	bottom: 0px;
