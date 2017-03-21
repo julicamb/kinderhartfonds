@@ -8,7 +8,8 @@ var port = 8000;
 var exec = require('child_process').exec, child;
 
 var _theme;
-var led = require('rgb-led');
+var ledjes = require('rgb-led');
+var led = new ledjes.wifiCon();
 led.setHost('192.168.0.20');
 
 //send arguments as: red, green, blue
