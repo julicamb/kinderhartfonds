@@ -52,7 +52,7 @@ io.on('connection', function (socket) {
         Office.writeToLight(255, 255, 255);
         console.log('led to white');
     };
-
+    led();
 
     var execString = 'sh commands/mainServer.sh';
     exec(execString);
