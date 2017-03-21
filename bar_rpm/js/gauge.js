@@ -2,7 +2,7 @@
  * author: Simen De Troch
  * last update: 19/03/2017
  */
-
+window.position(-10,930);
 // connect to the websocktserver
 var socket = new WebSocket("ws://localhost:8080");
 
