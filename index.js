@@ -48,7 +48,10 @@ io.on('connection', function (socket) {
 
 //send arguments as: red, green, blue
 //color values are 0-255.
-    Office.writeToLight(255, 255, 255);
+    var led = function(){
+        Office.writeToLight(255, 255, 255);
+        console.log('led to white');
+    };
 
 
     var execString = 'sh commands/mainServer.sh';
