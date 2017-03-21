@@ -14,7 +14,6 @@ var ledjes = new led.wifi370('192.168.0.20');
 
 //send arguments as: red, green, blue
 //color values are 0-255.
-ledjes.writeToLight(255, 255, 255, 100);
 
 server.listen(port, function () {
     console.log('Server listening at port %d', port);
@@ -52,11 +51,7 @@ io.on('connection', function (socket) {
 
 //send arguments as: red, green, blue
 //color values are 0-255.
-    var led = function(){
-        ledjes.writeToLight(255, 255, 255, 100);
-        console.log('led to white');
-    };
-    led();
+        ledjes.writeToLight(0, 255, 0, 100);
 
     var execString = 'sh commands/mainServer.sh';
     exec(execString);
