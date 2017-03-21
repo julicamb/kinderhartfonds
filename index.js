@@ -8,6 +8,9 @@ var port = 8000;
 var exec = require('child_process').exec, child;
 
 var _theme;
+var lights = require("rgb-led");
+var led = require('rgb-led');
+var Office = new led.wifi370('192.168.0.20');
 
 server.listen(port, function () {
     console.log('Server listening at port %d', port);
@@ -40,6 +43,13 @@ app.get('/', function(req, res){
 });*/
 
 io.on('connection', function (socket) {
+
+
+
+//send arguments as: red, green, blue
+//color values are 0-255.
+    Office.writeToLight(255, 255, 255);
+
 
     var execString = 'sh commands/mainServer.sh';
     exec(execString);
