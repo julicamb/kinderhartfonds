@@ -8,7 +8,6 @@ var port = 8000;
 var exec = require('child_process').exec, child;
 
 var _theme;
-var led = require('homebridge-magichome');
 
 //send arguments as: red, green, blue
 //color values are 0-255.
@@ -17,9 +16,6 @@ server.listen(port, function () {
     console.log('Server listening at port %d', port);
 });
 
-led.identify();
-led.getState();
-led.getColorFromDevice();
 // Routing
 app.use(express.static(__dirname + ''));
 //var server = http.createServer(app);
