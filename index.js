@@ -8,9 +8,7 @@ var port = 8000;
 var exec = require('child_process').exec, child;
 
 var _theme;
-var ledjes = require('rgb-led');
-var led = new ledjes.wifiCon();
-led.setHost('192.168.0.20');
+var led = require('homebridge-magichome');
 
 //send arguments as: red, green, blue
 //color values are 0-255.
@@ -19,7 +17,9 @@ server.listen(port, function () {
     console.log('Server listening at port %d', port);
 });
 
-
+led.identify();
+led.getState();
+led.getColorFromDevice();
 // Routing
 app.use(express.static(__dirname + ''));
 //var server = http.createServer(app);
@@ -85,7 +85,6 @@ io.on('connection', function (socket) {
         //geen nut hier maar gewoon als test
         //exec zal de 1.sh file executeren waar er een commando uitgevoerd wordt
         //exec('sh 1.sh /directory');
-        led.setColor("red");
         _theme = data;
         var execString = 'sh commands/' + data + '/1.sh';
         exec(execString);
@@ -125,7 +124,6 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('phase update', data);
     });
     socket.on('stop', function () {
-        led.setColor("100");
         console.log('stop');
         exec('sh commands/stop.sh');
         socket.broadcast.emit('stop');
