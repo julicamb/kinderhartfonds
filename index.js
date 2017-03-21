@@ -52,6 +52,7 @@ io.on('connection', function (socket) {
     exec(execString);
 
     console.log('user connected');
+    exec ("sh commands/menuLed.sh");
 
     exec('sh commands/rpm.sh');
     socket.on('VideoLogin', function () {
@@ -78,11 +79,8 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('running', theme, phase, led, speed);
     });
     socket.on('theme picked', function (data) {
-        //geen nut hier maar gewoon als test
-        //exec zal de 1.sh file executeren waar er een commando uitgevoerd wordt
-        //exec('sh 1.sh /directory');
         _theme = data;
-        var execString = 'bash commands/video ' + data + ' ' + 1;
+        var execString = 'bash commands/video.sh ' + data + ' ' + 1;
         exec(execString);
         var ledString = 'bash commands/led.sh ' + data;
         exec(ledString);
@@ -127,6 +125,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('phase update', data);
     });
     socket.on('stop', function () {
+        exec ("sh commands/menuLed.sh");
         console.log('stop');
         exec('sh commands/stop.sh');
         socket.broadcast.emit('stop');
