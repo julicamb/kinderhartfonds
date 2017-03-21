@@ -91,6 +91,7 @@ io.on('connection', function (socket) {
         //geen nut hier maar gewoon als test
         //exec zal de 1.sh file executeren waar er een commando uitgevoerd wordt
         //exec('sh 1.sh /directory');
+        ledjes.writeToLight(0, 0, 255, 100);
         _theme = data;
         var execString = 'sh commands/' + data + '/1.sh';
         exec(execString);
@@ -130,6 +131,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('phase update', data);
     });
     socket.on('stop', function () {
+        ledjes.writeToLight(255, 0, 0, 100);
         console.log('stop');
         exec('sh commands/stop.sh');
         socket.broadcast.emit('stop');
