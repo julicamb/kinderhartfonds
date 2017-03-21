@@ -1,1 +1,1 @@
-chromium-browser --window-size=1920,150 --window-position=0,2000 -app=http://192.168.0.37:8000/bar_rpm/index.html
+chromium-browser --window-size=1920,150 --window-position=0,2000 --app=/home/pi/App/bar_rpm/index.html
