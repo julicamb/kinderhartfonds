@@ -7,7 +7,7 @@ var socket = new WebSocket("ws://localhost:8080");
 
 var socketNaam = io();
 
-socketNaam.on('theme picked', function(data) {
+socketNaam.on('themaNaam', function(data) {
     $('#themaNaam').text(data);
 });
 

@@ -205,6 +205,7 @@ function startTest(phase, start) {
 
         // gekozen thema verzenden
         _socket.emit('theme picked', _theme['slug']);
+        _socket.emit('themaNaam', _theme['name']);
     // themes div verbergen met een fadeout en daarna verwijderen
     $('#themes').fadeOut(200, function() {
         $('body').empty();

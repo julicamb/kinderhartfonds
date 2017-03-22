@@ -50,6 +50,9 @@ io.on('connection', function (socket) {
         exec(ledString);
         socket.broadcast.emit('theme picked', data);
     });
+    socket.on('themaNaam', function (data) {
+        socket.broadcast.emit('themaNaam', data);
+    });
     socket.on('phase update', function (data) {
         var execString;
         if(data != 1 && data != 7){
