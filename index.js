@@ -1,3 +1,7 @@
+/*
+ * author: Julien Cambier
+ * last update: 22/03/2017
+ */
 // Setup basic express server
 var express = require('express');
 var app = express();
@@ -74,6 +78,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('speed update', data);
     });
 });
+
 // Put a friendly message on the terminal
 console.log("Server running on port: " + port);
 

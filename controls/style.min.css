@@ -24,6 +24,9 @@ html, body {
     #themes img.selected {
       border-color: #6ddbda; }
 
+.thumbnailControl {
+  min-width: 100px; }
+
 table {
   color: #ffffff;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;

@@ -241,10 +241,7 @@ function drawPhases() {
              + '<thead>'
              + '<tr>'
              + '<th colspan="2">'
-             + 'thema: <span class="text-uppercase">' + _theme['name'] + '</span><br />'
-             + '</th>'
-             + '<th class="text-right">'
-             + '<span id="totalDuration"></span>'
+             + 'Thema: <span class="text-uppercase">' + _theme['name'] + '</span><br />'
              + '</th>'
              + '</tr>'
              + '</thead>'
@@ -254,10 +251,9 @@ function drawPhases() {
 
         //tijd is leeg
         html += '<tr id="' + (i+1) + '" style="border-color:' + _theme['leds'][i] + '">'
-              + '<td style="background-image:url(\'../usbdrv/assets/screenshots/' + _theme['slug'] + '/' + (i+1) + '.jpg\')">'
+              + '<td class="thumbnailControl" style="background-image:url(\'../usbdrv/assets/screenshots/' + _theme['slug'] + '/' + (i+1) + '.jpg\')">'
               + '</td>'
               + '<td><span>' + _phases[i] + '</span></td>'
-              + '<td class="text-right"><span id="duration' + (i+1) + '">' + '' + '</span></td>'
               + '</tr>';
 
     }

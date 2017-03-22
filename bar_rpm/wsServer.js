@@ -59,6 +59,8 @@ function sendToSerial(data) {
   port.write(data);
 }
 
+
+
 // ------------------------ webSocket Server event functions
 wss.on('connection', handleConnection);
 function handleConnection(client) {
