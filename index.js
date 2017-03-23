@@ -97,7 +97,7 @@ var connections = new Array;            // list of connections to the server
 
 // configure the serial port:
 var port1 = new SerialPort(
-    "/dev/ttyACMO", {                   // serial communication options
+    "/dev/ttyACM0", {                   // serial communication options
         baudRate: 9600,                           // data rate: 9600 bits per second
         parser: SerialPort.parsers.readline("\n") // newline generates a data event
     });
