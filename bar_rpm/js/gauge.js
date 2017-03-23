@@ -3,7 +3,7 @@
  * last update: 19/03/2017
  */
 // connect to the websocktserver
-var socket = new WebSocket("ws://localhost:8080");
+var socket = new WebSocket("ws://192.168.0.37:8080");
 
 var socketNaam = io();
 
