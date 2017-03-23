@@ -86,7 +86,7 @@ io.on('connection', function (socket) {
 console.log("Server running on port: " + port);
 
 //RPM
-/*
+
 var SerialPort = require('serialport');       // include the serialport library
 var WebSocketServer = require('ws').Server;   // include the webSocket library
 
@@ -159,4 +159,3 @@ function broadcast(data) {
         connections[c].send(JSON.stringify(data)); // send the data to each connection
     }
 }
-*/
