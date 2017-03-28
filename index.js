@@ -17,10 +17,10 @@ server.listen(port, function () {
     console.log('Server listening at port %d', port);
 });
 // Routing
-app.use(express.static(__dirname + ''));
+/*app.use(express.static(__dirname + ''));
 app.get('/', function(req, res){
     res.sendFile('index.html', {root: publicPath});
-});
+});*/
 io.on('connection', function (socket) {
     var execString = 'sh commands/mainServer.sh';
     exec(execString);
@@ -88,11 +88,25 @@ console.log("Server running on port: " + port);
 //RPM
 
 var SerialPort = require('serialport');       // include the serialport library
-var WebSocketServer = require('ws').Server;   // include the webSocket library
+//var WebSocketServer = require('ws').Server;   // include the webSocket library
 
 // configure the webSocket server:
-var SERVER_PORT = 8080;                 // port number for the webSocket server
-var wss = new WebSocketServer({port: SERVER_PORT}); // the webSocket server
+//var SERVER_PORT = 8080;                 // port number for the webSocket server
+
+var express2 = require('express');
+var app2 = express2();
+
+var ws = require('websocket.io')
+    , http = require('http').createServer(app2).listen(8080, "192.168.0.37")
+    , server2 = ws.attach(http);
+
+app2.use(express.static(__dirname + ''));
+app2.get('/', function(req, res){
+    res.sendFile('index.html', {root: publicPath});
+});
+//var wss = new WebSocketServer({port: SERVER_PORT}); // the webSocket server
+
+
 var connections = new Array;            // list of connections to the server
 
 // configure the serial port:
@@ -140,15 +154,15 @@ function sendToSerial(data) {
 }
 
 // ------------------------ webSocket Server event functions
-wss.on('connection', handleConnection);
+ws.on('connection', handleConnection);
 function handleConnection(client) {
-    console.log("New Connection");        // you have a new client
+    console.log("New Connection RPM");        // you have a new client
     connections.push(client);             // add this client to the connections array
 
     client.on('message', sendToSerial);      // when a client sends a message,
 
     client.on('close', function() {           // when a client closes its connection
-        console.log("connection closed");       // print it out
+        console.log("connection closed RPM");       // print it out
         var position = connections.indexOf(client); // get the client's position in the array
         connections.splice(position, 1);        // and delete it from the array
     });

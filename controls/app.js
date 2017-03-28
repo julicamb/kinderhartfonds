@@ -43,8 +43,6 @@ var _themes = [
 ];
 
 
-
-
 var _phases = [
     'Ademtest',
     'Opwarming',

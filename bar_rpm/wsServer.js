@@ -18,11 +18,14 @@ var connections = new Array;            // list of connections to the server
 
 // configure the serial port:
 var port = new SerialPort(
-    "/dev/cu.usbmodem1411", {                   // serial communication options
+    "/dev/ttyACM0", {                   // serial communication options
       baudRate: 9600,                           // data rate: 9600 bits per second
       parser: SerialPort.parsers.readline("\n") // newline generates a data event
     });
-
+WebSocketServer.use(express.static(__dirname + ''));
+WebSocketServer.get('/', function(req, res){
+    res.sendFile('index.html', {root: publicPath});
+});
 // set up event listeners for the serial events:
 port.on('open', showPortOpen);
 port.on('data', sendSerialData);
